@@ -88,32 +88,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(height: 16),
-              Divider(height: 1,),
+              Divider(height: 1),
               SizedBox(height: 8),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('History',style: TextStyle(color: Colors.white,fontSize: 16),),
-                  Text('Total Count:',style: TextStyle(color: Colors.white,fontSize: 16),),
+                  Text(
+                    'History',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  Text(
+                    'Total Count:',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
                 ],
               ),
-              Expanded(child: ListView.builder(
-                primary: false,
+              Expanded(
+                child: ListView.builder(
+                  primary: false,
                   itemCount: 10,
-                  itemBuilder: (context,index){
-                   return ListTile(
-                      leading: CircleAvatar(
-                        child: Text('$index'),
-                      ),
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      leading: CircleAvatar(child: Text('$index')),
                       title: Text('$index'),
                       trailing: Text('$index'),
                     );
-
-
-              }))
-              
-              
+                  },
+                ),
+              ),
             ],
           ),
         ),
