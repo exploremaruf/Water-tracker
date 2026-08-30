@@ -12,6 +12,17 @@ class _HomeScreenState extends State<HomeScreen> {
     text: '1',
   );
 
+  void countreturner(){
+    int dropcount = int.parse(countTEcontroller.text);
+
+    watercount.add(dropcount);
+
+    print(watercount);
+  }
+
+
+  List <int> watercount = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,27 +51,37 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(100),
                       border: Border.all(color: Colors.blue, width: 5),
                     ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(24),
-                          child: Column(
-                            children: [
-                              Icon(
-                                Icons.water_drop_outlined,
-                                size: 40,
-                                color: Colors.blue,
-                              ),
-                              SizedBox(height: 16),
-                              Text(
-                                'Press Here',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
+                    child: GestureDetector(
+                      onTap: countreturner ,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(24),
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.water_drop_outlined,
+                                  size: 40,
+                                  color: Colors.blue,
+                                ),
+                                SizedBox(height: 16),
+                                Text(
+                                  'Press Here',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                   ),
                 ),
               ),
@@ -124,3 +145,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
+
