@@ -11,17 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController countTEcontroller = TextEditingController(
     text: '1',
   );
-
-  void countreturner(){
-    int dropcount = int.parse(countTEcontroller.text);
-
-    watercount.add(dropcount);
-
-    print(watercount);
-  }
-
-
-  List <int> watercount = [];
+  List<int> watercount = [];
 
   @override
   Widget build(BuildContext context) {
@@ -36,52 +26,48 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Center(
           child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.purple.shade100,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 32,
-                    horizontal: 64,
+              GestureDetector(
+                onTap: countreturner,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.purple.shade100,
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      border: Border.all(color: Colors.blue, width: 5),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 32,
+                      horizontal: 64,
                     ),
-                    child: GestureDetector(
-                      onTap: countreturner ,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(24),
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.water_drop_outlined,
-                                  size: 40,
-                                  color: Colors.blue,
-                                ),
-                                SizedBox(height: 16),
-                                Text(
-                                  'Press Here',
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ],
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(color: Colors.blue, width: 5),
+                      ),
+                      child: GestureDetector(
+                        onTap: countreturner,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(24),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.water_drop_outlined,
+                                    size: 40,
+                                    color: Colors.blue,
+                                  ),
+                                  SizedBox(height: 16),
+                                  Text(
+                                    'Press Here',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                   ),
                 ),
               ),
@@ -128,12 +114,19 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 child: ListView.builder(
                   primary: false,
-                  itemCount: 10,
+                  itemCount: watercount.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      leading: CircleAvatar(child: Text('$index')),
-                      title: Text('$index'),
-                      trailing: Text('$index'),
+                      leading: CircleAvatar(child: Text('${index+1}')),
+                      title: Text(DateTime.now().toString(),style:
+                        TextStyle(
+                          color: Colors.white
+                        ),),
+                      trailing: Text(watercount[index].toString(),style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white
+                      ),),
                     );
                   },
                 ),
@@ -144,7 +137,22 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+  void countreturner() {
+    // int dropcount = int.parse(countTEcontroller.text);
+    // watercount.add(dropcount);
+    // setState(() {});
+
+    int glasscount = int.tryParse(countTEcontroller.text)??1;
+    
+
+    
+  }
+
+
+
+
+
+
+
+
 }
-
-
-
